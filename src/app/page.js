@@ -1,25 +1,34 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 export default function Home() {
+  const pathname = usePathname();
   return (
-    <main className="bg-black text-white min-h-screen">
+<main className="bg-black text-white min-h-screen relative overflow-hidden">
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.06),transparent_60%)]" />
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,rgba(255,255,255,0.03),transparent_60%)]" />
+
+  <div className="relative z-10">
 
       {/* NAVBAR */}
-      <nav className="w-full flex justify-between items-center px-8 py-4 border-b border-gray-800">
-        <h1 className="text-lg font-semibold">IEDC SB College</h1>
 
-        <div className="flex gap-6 text-sm text-gray-400">
-          <a href="#" className="hover:text-white transition">Home</a>
-          <a href="#" className="hover:text-white transition">Roadmap</a>
-          <a href="#" className="hover:text-white transition">Team</a>
-          <a href="#" className="hover:text-white transition">Media</a>
-        </div>
-      </nav>
+<nav className="sticky top-0 z-50 backdrop-blur-md bg-black/70 w-full flex justify-between items-center px-6 md:px-8 py-4 border-b border-gray-800">
+
+  <h1 className="text-lg font-semibold">IEDC SB College</h1>
+  <div className="flex gap-6 text-sm text-gray-400">
+    <Link href="/"className={`hover:text-white transition ${pathname === "/" ? "text-white font-semibold" : "text-gray-400"}`}>Home</Link>
+    <Link href="/roadmap"className={`hover:text-white transition ${pathname === "/roadmap" ? "text-white font-semibold" : "text-gray-400"}`}>Roadmap</Link>
+    <Link href="/media"className={`hover:text-white transition ${pathname === "/media" ? "text-white font-semibold" : "text-gray-400"}`}>Media</Link>
+    <Link href="/about"className={`hover:text-white transition ${pathname === "/about" ? "text-white font-semibold" : "text-gray-400"}`}>About</Link>
+    <Link href="/join"className={`hover:text-white transition ${pathname === "/join" ? "text-white font-semibold" : "text-gray-400"}`}>Join</Link>
+</div>
+</nav>
 
       {/* HERO */}
-      <div className="flex items-center justify-center min-h-[90vh]">
+      <section id="home" className="flex items-center justify-center min-h-[90vh]">
         <div className="max-w-3xl text-center px-6">
 
           <motion.p 
@@ -35,7 +44,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-5xl md:text-6xl font-bold leading-tight mb-6"
+            className="text-4xl md:text-6xl font-bold leading-tight mb-6"
           >
             We are not here to be something.
             <br />
@@ -69,10 +78,11 @@ export default function Home() {
           </motion.div>
 
         </div>
-      </div>
+      </section>
+
 
       {/* TIMELINE */}
-<section className="max-w-4xl mx-auto px-6 py-20">
+<section className="max-w-4xl mx-auto px-4 md:px-6 py-16 md:py-20 border-t border-gray-900">
   
   <h2 className="text-3xl font-bold mb-12 text-center">
     6 Month Roadmap
@@ -154,7 +164,8 @@ export default function Home() {
 
 </section>
 
-<section className="max-w-6xl mx-auto px-6 py-24">
+{/* LEADERSHIP TEAM */}
+<section id="team"className="max-w-4xl mx-auto px-4 md:px-6 py-16 md:py-20 border-t border-gray-900">
 
   <h2 className="text-3xl font-bold text-center mb-4">
     Leadership Team
@@ -212,8 +223,8 @@ export default function Home() {
   </div>
 </section>
 
-<section className="max-w-6xl mx-auto px-6 py-24">
-
+{/* STORIES AND MEDIA */}
+<section id="media" className="max-w-4xl mx-auto px-4 md:px-6 py-16 md:py-20 border-t border-gray-900">
   <h2 className="text-3xl font-bold text-center mb-4">
     Stories & Media
   </h2>
@@ -243,8 +254,7 @@ export default function Home() {
   </div>
 </section>
 
-<section className="max-w-6xl mx-auto px-6 py-24">
-
+<section className="max-w-4xl mx-auto px-4 md:px-6 py-16 md:py-20 border-t border-gray-900">
   <h2 className="text-3xl font-bold text-center mb-4">
     Partners & Sponsors
   </h2>
@@ -270,7 +280,7 @@ export default function Home() {
   </div>
 </section>
 
-<section className="text-center py-32">
+<section className="text-center py-20 md:py-32 border-t border-gray-900">
 
   <h2 className="text-4xl font-bold mb-6">
     Ready to build something that matters?
@@ -285,6 +295,8 @@ export default function Home() {
   </button>
 
 </section>
+
+</div>
       
     </main>
   );
