@@ -1,7 +1,9 @@
-export default function Roadmap() {
+import JoinSection from "../../components/Join.js";
+
+export default function JoinPage() {
   return (
-    <main className="bg-black text-white min-h-screen flex items-center justify-center">
-      <h1 className="text-3xl font-bold">JoinUs Page</h1>
+    <main className="bg-black text-white min-h-screen flex items-center justify-center px-4">
+      <JoinSection />
     </main>
   );
 }

@@ -1,7 +1,9 @@
-export default function Roadmap() {
+import Roadmap from "../../components/Roadmap";
+
+export default function RoadmapPage() {
   return (
-    <main className="bg-black text-white min-h-screen flex items-center justify-center">
-      <h1 className="text-3xl font-bold">Roadmap Page</h1>
+    <main className="bg-black text-white min-h-screen">
+      <Roadmap />
     </main>
   );
 }

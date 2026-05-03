@@ -1,3 +1,9 @@
-export default function About() {
-  return <h1 className="text-white">ABOUT PAGE</h1>;
+import Team from "../../components/Team";
+
+export default function AboutPage() {
+  return (
+    <main className="bg-black text-white min-h-screen">
+      <Team />
+    </main>
+  );
 }
