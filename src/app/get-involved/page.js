@@ -31,10 +31,10 @@ export default function GetInvolvedPage() {
   return (
     <main className="min-h-screen">
       <section className="mx-auto max-w-7xl px-6 py-24 md:px-8 md:py-32">
-        <div className="grid gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
+        <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
           
           {/* Left Content */}
-          <div>
+          <div className="order-2 lg:order-1">
             <p
               className="mb-4 text-sm font-medium uppercase tracking-[0.28em]"
               style={{ color: "var(--muted)" }}
@@ -97,7 +97,7 @@ export default function GetInvolvedPage() {
           </div>
 
           {/* Right Video Panel */}
-          <div className="lg:sticky lg:top-28">
+          <div className="order-1 lg:order-2 lg:sticky lg:top-28">
             <div
               className="overflow-hidden rounded-[2rem] border p-3 transition-all duration-300 hover:-translate-y-1"
               style={{

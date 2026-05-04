@@ -172,3 +172,28 @@
   letter-spacing: 0.5px;
   line-height: 1.2;
 }
+
+@media (max-width: 900px) {
+  .iedc-footer-inner {
+    padding: 56px 24px 40px;
+  }
+
+  .iedc-footer-top {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .iedc-brand {
+    align-items: flex-start;
+  }
+
+  .iedc-footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+  }
+
+  .iedc-socials {
+    flex-wrap: wrap;
+  }
+}
