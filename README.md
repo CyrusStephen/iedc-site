@@ -24,3 +24,34 @@ A modern, minimal website for the Innovation and Entrepreneurship Development Ce
 ---
 
 ## 📂 Project Structure
+
+
+
+---
+
+## 📌 Current Status
+
+Actively under development.
+
+Recent improvements:
+- Full-width hero sections for Get Involved pages
+- Mobile responsiveness fixes (footer, layout)
+- Contact page with anchored navigation
+- Scroll-triggered animations
+
+---
+
+## 🌐 Live Site
+
+(Add your Vercel link here once deployed)
+
+---
+
+## 🎯 Goal
+
+To build a clean, structured, and scalable platform for student innovation and entrepreneurship.
+
+---
+
+Built with focus on clarity, structure, and real user experience.
+
