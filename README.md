@@ -4,7 +4,7 @@ A modern, minimal website for the Innovation and Entrepreneurship Development Ce
 
 ---
 
-## 🚀 Tech Stack
+## Tech Stack
 
 - Next.js (App Router)
 - Tailwind CSS
@@ -12,7 +12,7 @@ A modern, minimal website for the Innovation and Entrepreneurship Development Ce
 
 ---
 
-## ✨ Features
+## Features
 
 - Clean, minimal UI inspired by YC / Stripe
 - Fully responsive (mobile-first design)
@@ -23,13 +23,13 @@ A modern, minimal website for the Innovation and Entrepreneurship Development Ce
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 
 
 ---
 
-## 📌 Current Status
+## Current Status
 
 Actively under development.
 
@@ -41,9 +41,8 @@ Recent improvements:
 
 ---
 
-## 🌐 Live Site
-
-(Add your Vercel link here once deployed)
+## Live Site
+https://iedc-site-k7v3.vercel.app/
 
 ---
 
