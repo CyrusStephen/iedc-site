@@ -1,7 +1,7 @@
-"use client";
 
 import Hero from "../components/Hero";
 import HomeContent from "../components/HomeContent";
+import VisualDivider from "../components/VisualDivider";
 
 export default function Home() {
   return (
@@ -27,8 +27,8 @@ export default function Home() {
 
       <div className="relative z-10">
 
-        {/* HERO */}
         <Hero />
+        <VisualDivider />
         <HomeContent />
 
       </div>

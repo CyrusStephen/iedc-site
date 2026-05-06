@@ -10,8 +10,8 @@
 
   --border: rgba(255, 255, 255, 0.12);
 
-  --accent: #f59e0b;
-  --accent-soft: rgba(245, 158, 11, 0.14);
+  --accent: #b47d46;
+  --accent-soft: rgba(180, 125, 70, 0.16);
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
@@ -25,4 +25,50 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-geist-sans);
+}
+
+/* Premium global background */
+.site-bg {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 15% 0%, var(--accent-soft), transparent 32%),
+    radial-gradient(circle at 85% 10%, rgba(255, 255, 255, 0.08), transparent 28%),
+    linear-gradient(180deg, #050505 0%, #080808 45%, #050505 100%);
+}
+
+.site-bg::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+
+  background-size: 64px 64px;
+  opacity: 0.22;
+
+  /* 👇 FIX */
+  -webkit-mask-image: linear-gradient(to bottom, black, transparent 78%);
+  mask-image: linear-gradient(to bottom, black, transparent 78%);
+
+  z-index: 0;
+}
+
+.site-bg::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 20%, rgba(245, 158, 11, 0.08), transparent 35%),
+    radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.04), transparent 30%);
+  z-index: 1;
+}
+
+.content-layer {
+  position: relative;
+  z-index: 2;
 }
