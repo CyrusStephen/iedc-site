@@ -1,33 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 
-const faqs = [
-  {
-    question: "How can I join IEDC SB?",
-    answer: "Add your answer here.",
-  },
-  {
-    question: "Do I need a startup idea to become a member?",
-    answer: "Add your answer here.",
-  },
-  {
-    question: "Can students from any department join?",
-    answer: "Add your answer here.",
-  },
-  {
-    question: "How can I pitch an idea to IEDC?",
-    answer: "Add your answer here.",
-  },
-  {
-    question: "Can colleges or organizations collaborate with IEDC SB?",
-    answer: "Add your answer here.",
-  },
-  {
-    question: "Who should I contact for partnerships or events?",
-    answer: "Add your answer here.",
-  },
-];
-
 const socials = [
   {
     id: "linkedin",
@@ -58,7 +31,7 @@ const socials = [
     label: "Email",
     value: "sbcciedc@gmail.com",
     description:
-      "For collaborations, memberships, partnerships, and general enquiries.",
+      "For collaborations, memberships, partnerships, and for general enquiries reach out to us via email.",
     href: "mailto:sbcciedc@gmail.com",
   },
 ];
@@ -96,10 +69,7 @@ export default function ContactPage() {
   return (
     <main className="min-h-screen">
       <section className="mx-auto max-w-6xl px-6 py-24 md:px-8 md:py-32">
-        <div className="grid gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
-          
-          {/* Left */}
-          <div>
+        <div>
             <p
               className="mb-4 text-sm font-medium uppercase tracking-[0.28em]"
               style={{ color: "var(--muted)" }}
@@ -113,7 +83,6 @@ export default function ContactPage() {
             >
               Let’s build something meaningful.
             </h1>
-
             <p
               className="mt-6 max-w-xl text-lg leading-8"
               style={{ color: "var(--muted)" }}
@@ -122,7 +91,19 @@ export default function ContactPage() {
               collaborations, events, partnerships, or general enquiries.
             </p>
 
-            <div className="mt-10 space-y-3">
+               <div className="mt-10">
+  <p className="text-base leading-8 text-white/60">
+    Read our{" "}
+    <a href="/faqs" className="group relative inline-block text-white">
+      frequently asked questions
+
+      <span className="absolute left-0 -bottom-1 h-[1.5px] w-0 bg-[var(--accent)] transition-all duration-300 group-hover:w-full" />
+    </a>{" "}
+    from students to know if your question has already been answered.
+  </p>
+</div>
+
+            <div className="mt-12 grid gap-5 md:grid-cols-2">
               {socials.map((item) => (
                 <ContactItem
                   key={item.id}
@@ -132,46 +113,6 @@ export default function ContactPage() {
               ))}
             </div>
           </div>
-
-          {/* Right FAQ */}
-          <div
-            className="rounded-[2rem] border p-6 md:p-8"
-            style={{
-              background: "var(--surface)",
-              borderColor: "var(--border)",
-            }}
-          >
-            <h2
-              className="text-2xl font-semibold tracking-tight"
-              style={{ color: "var(--text)" }}
-            >
-              Frequently asked questions
-            </h2>
-
-            <div
-              className="mt-8 divide-y"
-              style={{ borderColor: "var(--border)" }}
-            >
-              {faqs.map((faq) => (
-                <div key={faq.question} className="py-6 first:pt-0 last:pb-0">
-                  <h3
-                    className="text-lg font-medium"
-                    style={{ color: "var(--text)" }}
-                  >
-                    {faq.question}
-                  </h3>
-
-                  <p
-                    className="mt-3 text-sm leading-6"
-                    style={{ color: "var(--muted)" }}
-                  >
-                    {faq.answer}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
       </section>
     </main>
   );

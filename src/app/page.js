@@ -11,10 +11,10 @@ export default function Home() {
 <div className="absolute inset-0 overflow-hidden">
   
   {/* Glow gradient top */}
-  <div className="absolute -top-40 left-1/2 w-[600px] h-[600px] -translate-x-1/2 bg-purple-500/20 blur-[120px] rounded-full animate-pulse" />
+  <div className="absolute -top-40 left-1/2 w-[600px] h-[600px] -translate-x-1/2 bg-[rgba(180,125,70,0.10)] blur-[120px] rounded-full animate-pulse" />
 
   {/* Glow gradient bottom */}
-  <div className="absolute bottom-[-200px] left-1/3 w-[500px] h-[500px] bg-blue-500/20 blur-[120px] rounded-full animate-pulse" />
+  <div className="absolute bottom-[-200px] left-1/3 w-[500px] h-[500px] bg-[rgba(180,125,70,0.4)] blur-[120px] rounded-full animate-pulse" />
 
   {/* Floating orb */}
   <div className="absolute top-1/3 right-[-100px] w-[300px] h-[300px] bg-white/10 blur-[100px] rounded-full animate-bounce" />
@@ -30,7 +30,6 @@ export default function Home() {
         <Hero />
         <VisualDivider />
         <HomeContent />
-
       </div>
     </main>
   );

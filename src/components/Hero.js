@@ -84,17 +84,18 @@ DEVELOPMENT CELL
             </span>
           </Link>
 
-          <button
-            className="inline-flex items-center justify-center rounded-full px-6 py-3 text-[15px] font-medium transition-all duration-300 hover:-translate-y-1"
-            style={{
-              color: "var(--text)",
-              background: "rgba(15,15,15,0.72)",
-              border: "1px solid var(--border)",
-              backdropFilter: "blur(14px)",
-            }}
-          >
-            Explore
-          </button>
+ <Link
+  href="/#iedc-stories"
+  className="inline-flex items-center justify-center rounded-full px-6 py-3 text-[15px] font-medium transition-all duration-300 hover:-translate-y-1"
+  style={{
+    color: "var(--text)",
+    background: "rgba(15,15,15,0.72)",
+    border: "1px solid var(--border)",
+    backdropFilter: "blur(14px)",
+  }}
+>
+  Explore
+</Link>
         </motion.div>
       </div>
     <div className="pointer-events-none absolute bottom-0 left-0 z-20 h-10 w-full bg-gradient-to-t from-[#050505]/45 via-[#050505]/15 to-transparent" />

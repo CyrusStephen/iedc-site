@@ -35,7 +35,7 @@ export default function StartupOne() {
     style={{ paddingTop: "140px" }}>
 
       {/* HERO */}
-<section className="relative px-6 pb-24 md:px-12 md:pb-32">
+<section className="relative px-6 pb-16 md:px-12 md:pb-20">
   <motion.div {...sectionAnimation} className="mx-auto max-w-6xl">
     <p className="mb-4 text-xs uppercase tracking-[0.35em] text-white/50">
       Student Startup
@@ -97,6 +97,41 @@ export default function StartupOne() {
               </div>
             </div>
 
+            <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6">
+  <p className="mb-4 text-xs uppercase tracking-[0.3em] text-white/40">
+    Currently Looking For
+  </p>
+
+  <div className="flex flex-wrap gap-2">
+    {["Developers", "Designers", "Beta Testers", "Mentors"].map((item) => (
+      <span
+        key={item}
+        className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-white/70"
+      >
+        {item}
+      </span>
+    ))}
+  </div>
+</div>
+
+<div className="grid gap-4 sm:grid-cols-3">
+  {[
+    { value: "12+", label: "Users" },
+    { value: "3", label: "Team Members" },
+    { value: "2026", label: "Founded" },
+  ].map((stat) => (
+    <div
+      key={stat.label}
+      className="rounded-2xl border border-white/10 bg-white/[0.03] p-5"
+    >
+      <p className="text-2xl font-semibold text-white">{stat.value}</p>
+      <p className="mt-1 text-xs uppercase tracking-[0.25em] text-white/40">
+        {stat.label}
+      </p>
+    </div>
+  ))}
+</div>
+
             <div className="flex flex-wrap gap-3">
               <a
                 href="#"
@@ -111,6 +146,15 @@ export default function StartupOne() {
               >
                 Instagram
               </a>
+
+              <a
+  href="https://forms.gle/YOUR_GOOGLE_FORM_LINK"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="rounded-full border border-white/20 px-5 py-3 text-sm text-white/80 transition hover:-translate-y-[1px] hover:bg-white/10 hover:text-white"
+>
+  Contact / Enquire
+</a>
             </div>
           </div>
 
@@ -123,7 +167,7 @@ export default function StartupOne() {
                   className={`group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] transition-all duration-500 hover:-translate-y-1 hover:border-white/25 hover:shadow-[0_30px_90px_rgba(255,255,255,0.06)] ${
                     index === 0 || index === 3
                       ? "h-72"
-                      : "h-60 lg:mt-10"
+                      : "h-72"
                   }`}
                 >
                   <div className="pointer-events-none absolute inset-0 z-10 opacity-0 transition duration-500 group-hover:opacity-100 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.12),transparent_40%)]" />
@@ -178,12 +222,22 @@ export default function StartupOne() {
           </div>
 
           <div className="mt-20">
-            <Link
-              href="/"
-              className="text-sm text-white/50 transition hover:text-white"
-            >
-              ← Back to Home
-            </Link>
+           <Link
+  href="/"
+  className="group inline-flex items-center gap-3 text-sm text-white/65 transition-all duration-300 hover:text-white"
+>
+  <div className="flex h-9 w-9 items-center justify-center rounded-full border border-white/8 bg-white/[0.03] transition-all duration-300 group-hover:border-white/20 group-hover:bg-white/[0.06]">
+    <span className="transition-transform duration-300 group-hover:-translate-x-[2px] group-hover:-translate-y-[2px]">
+      ↖
+    </span>
+  </div>
+
+  <span className="relative">
+    Back
+
+    <span className="absolute -bottom-1 left-0 h-[1.5px] w-0 bg-[var(--accent)] transition-all duration-300 group-hover:w-full" />
+  </span>
+</Link>
           </div>
         </motion.div>
       </section>

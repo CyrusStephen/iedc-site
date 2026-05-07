@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import CampusMapSection from "@/components/CampusMapSection";
 
 const sectionAnimation = {
   initial: { opacity: 0, y: 28 },
@@ -20,14 +21,14 @@ const startups = [
   {
     title: "Startup Name",
     description: "A venture by a 3rd year student, focused on solving [problem].",
-    image: "/images/startups/startup-one.jpg",
-    href: "/student-startups/startup-one",
+    image: "/images/startups/startup-two.jpg",
+    href: "/student-startups/startup-two",
   },
   {
     title: "Startup Name",
     description: "A venture by a 3rd year student, focused on solving [problem].",
-    image: "/images/startups/startup-one.jpg",
-    href: "/student-startups/startup-one",
+    image: "/images/startups/startup-three.jpg",
+    href: "/student-startups/startup-three",
   },
 ];
 
@@ -61,7 +62,8 @@ const videos = [
 
 export default function HomeContent() {
   return (
-    <section className="relative w-full px-6 md:px-12 pt-6 pb-20 space-y-20">
+    <section id="our-mission" 
+    className="relative w-full px-6 md:px-12 pt-6 pb-20 space-y-20 scroll-mt-32">
       <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_0%,rgba(180,125,70,0.10),transparent_45%),radial-gradient(circle_at_15%_35%,rgba(120,75,40,0.08),transparent_40%)]" />
 
       <VisionCard />
@@ -86,33 +88,47 @@ export default function HomeContent() {
         </p>
       </motion.div>
 
-      <Section title="Student Businesses and Startups">
-        <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
-          {startups.map((startup, index) => (
-            <StartupCard key={index} {...startup} />
-          ))}
-        </div>
-      </Section>
+      <div id="student-startups" className="scroll-mt-32">
+  <Section title="Student Businesses and Startups">
+    <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
+      {startups.map((startup, index) => (
+        <StartupCard key={index} {...startup} />
+      ))}
+    </div>
+  </Section>
+</div>
 
-      <Section title="Collaborations">
-        <div className="grid md:grid-cols-2 gap-6">
-          {collaborations.map((item, index) => (
-            <InfoCard key={index} {...item} />
-          ))}
-        </div>
-      </Section>
+<div id="collaborations" className="scroll-mt-32">
+  <Section title="Collaborations">
+    <div className="grid md:grid-cols-2 gap-6">
+      {collaborations.map((item, index) => (
+        <InfoCard key={index} {...item} />
+      ))}
+    </div>
+  </Section>
+</div>
 
-      <Section title="IEDC Stories">
-        <PlaceholderGrid items={stories} columns="md:grid-cols-2" height="h-40" />
-      </Section>
+<div id="campus-map" className="scroll-mt-32">
+  <CampusMapSection />
+</div>
 
-      <Section title="IEDC Events">
-        <PlaceholderGrid items={events} columns="md:grid-cols-3" height="h-48" />
-      </Section>
+<div id="iedc-stories" className="scroll-mt-32">
+  <Section title="IEDC Stories">
+    <PlaceholderGrid items={stories} columns="md:grid-cols-2" height="h-40" />
+  </Section>
+</div>
 
-      <Section title="IEDC TV">
-        <PlaceholderGrid items={videos} columns="md:grid-cols-3" height="h-48" />
-      </Section>
+<div id="iedc-events" className="scroll-mt-32">
+  <Section title="IEDC Events">
+    <PlaceholderGrid items={events} columns="md:grid-cols-3" height="h-48" />
+  </Section>
+</div>
+
+<div id="iedc-tv" className="scroll-mt-32">
+  <Section title="IEDC TV">
+    <PlaceholderGrid items={videos} columns="md:grid-cols-3" height="h-48" />
+  </Section>
+</div>
     </section>
   );
 }
@@ -124,7 +140,15 @@ function VisionCard() {
       className="relative -mt-12 md:-mt-16 left-1/2 right-1/2 -mx-[50vw] w-screen"
     >
       <div className="group relative h-96 md:h-[450px] rounded-b-[2rem] overflow-hidden border border-white/10 cursor-pointer transition-all duration-500 hover:border-white/30 hover:shadow-[0_30px_90px_rgba(255,255,255,0.08)]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_25%,rgba(255,255,255,0.16),transparent_28%),linear-gradient(135deg,rgba(37,99,235,0.22),rgba(88,28,135,0.12),rgba(0,0,0,0.96)_65%)]" />
+        <video
+  autoPlay
+  muted
+  loop
+  playsInline
+  className="absolute inset-0 h-full w-full object-cover"
+>
+  <source src="/videos/vision.mp4" type="video/mp4" />
+</video>
 
         <div className="absolute inset-0 bg-black/40 group-hover:bg-black/25 transition duration-500" />
 

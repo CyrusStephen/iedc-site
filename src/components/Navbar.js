@@ -107,16 +107,25 @@ export default function Navbar() {
 
             return (
               <Link
-                key={link.href}
-                href={link.href}
-                className={`block rounded-2xl px-5 py-4 text-sm font-medium tracking-wide transition ${
-                  isActive
-                    ? "bg-white/[0.12] text-white"
-                    : "text-white/70 hover:bg-white/[0.08] hover:text-white"
-                }`}
-              >
-                {link.label}
-              </Link>
+  key={link.href}
+  href={link.href}
+  onClick={() => setMenuOpen(false)}
+  className={`group block rounded-2xl px-5 py-4 text-sm font-medium tracking-wide transition ${
+    isActive
+      ? "bg-white/[0.12] text-white"
+      : "text-white/70 hover:bg-white/[0.08] hover:text-white"
+  }`}
+>
+  <span className="relative inline-block">
+    {link.label}
+
+    <span
+      className={`absolute left-0 -bottom-1 h-[1.5px] bg-[var(--accent)] transition-all duration-300 ${
+        isActive ? "w-full" : "w-0 group-hover:w-full"
+      }`}
+    />
+  </span>
+</Link>
             );
           })}
         </div>

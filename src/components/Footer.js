@@ -6,6 +6,7 @@ import {
 } from "react-icons/fa";
 import "./Footer.css";
 import { Cormorant } from "next/font/google";
+import Link from "next/link";
 
 const cormorant = Cormorant({
   subsets: ["latin"],
@@ -32,11 +33,11 @@ export default function Footer() {
           <FooterColumn
             title="Community"
             links={[
-              "Student Startups",
-              "Collaborations",
-              "IEDC Stories",
-              "IEDC TV",
-            ]}
+  { label: "Collaborations", href: "/#collaborations" },
+  { label: "IEDC Stories", href: "/#iedc-stories" },
+  { label: "IEDC Events", href: "/#iedc-events" },
+  { label: "IEDC TV", href: "/#iedc-tv" },
+]}
           />
 
           <FooterColumn
@@ -50,14 +51,14 @@ export default function Footer() {
 />
 
           <FooterColumn
-  title="Resources"
-  links={[
-    "News",
-    "Startup Showcase",
-    "Our Mission",
-    "FAQs",
-    "Watch Live",
-  ]}
+title="Resources"
+links={[
+  { label: "News", href: "/news" },
+  { label: "Startup Showcase", href: "/#student-startups" },
+  { label: "Our Mission", href: "/#our-mission" },
+  { label: "FAQs", href: "/faqs" },
+  { label: "Watch Live", href: "/live" },
+]}
 />
 
           <div className="iedc-column iedc-empty-column"></div>
@@ -140,9 +141,9 @@ function FooterColumn({ title, links }) {
         typeof link === "string" ? (
           <p key={link}>{link}</p>
         ) : (
-          <a key={link.href} href={link.href}>
-            {link.label}
-          </a>
+          <Link key={link.href} href={link.href}>
+      {link.label}
+    </Link>
         )
       )}
     </div>
