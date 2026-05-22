@@ -26,11 +26,9 @@ export default function Hero() {
 <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20" />
       </div>
 
-      {/* Soft glow */}
-      <div className="absolute left-1/2 top-1/2 z-0 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--accent-soft)] blur-[120px]" />
 
       {/* Content */}
-      <div className="relative z-10 max-w-1xl px-6 pt-20 text-center md:pt-24">
+      <div className="relative z-10 max-w-5xl px-6 pt-20 text-center md:pt-24">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -91,7 +89,6 @@ DEVELOPMENT CELL
     color: "var(--text)",
     background: "rgba(15,15,15,0.72)",
     border: "1px solid var(--border)",
-    backdropFilter: "blur(14px)",
   }}
 >
   Explore

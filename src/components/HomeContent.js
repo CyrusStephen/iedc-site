@@ -44,28 +44,41 @@ const collaborations = [
 ];
 
 const stories = [
-  { title: "Student Story", href: "/media" },
-  { title: "Founder Journey", href: "/media" },
+  { title: "Student Story", href: "/stories" },
+  { title: "Founder Journey", href: "/stories" },
 ];
 
 const events = [
-  { title: "IEDC Event", href: "/media" },
-  { title: "Workshop", href: "/media" },
-  { title: "Innovation Meet", href: "/media" },
+  { title: "IEDC Event", href: "/events" },
+  { title: "Workshop", href: "/events" },
+  { title: "Innovation Meet", href: "/events" },
 ];
 
-const videos = [
-  { title: "IEDC TV", href: "/media" },
-  { title: "Campus Talk", href: "/media" },
-  { title: "Founder Clip", href: "/media" },
+const tvItems = [
+  {
+    title: "IEDC TV",
+    label: "Video",
+    href: "/tv",
+    video: "/videos/iedc-tv-1.mp4",
+  },
+  {
+    title: "Campus Talk",
+    label: "Video",
+    href: "/tv",
+    video: "/videos/campus-talk-1.mp4",
+  },
+  {
+    title: "Founder Clip",
+    label: "Video",
+    href: "/tv",
+    video: "/videos/founder-clip-1.mp4",
+  },
 ];
 
 export default function HomeContent() {
   return (
     <section id="our-mission" 
-    className="relative w-full px-6 md:px-12 pt-6 pb-20 space-y-20 scroll-mt-32">
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_0%,rgba(180,125,70,0.10),transparent_45%),radial-gradient(circle_at_15%_35%,rgba(120,75,40,0.08),transparent_40%)]" />
-
+    className="relative w-full px-6 md:px-12 pt-6 pb-28 space-y-28 scroll-mt-32">
       <VisionCard />
 
       <motion.div
@@ -112,6 +125,8 @@ export default function HomeContent() {
   <CampusMapSection />
 </div>
 
+<CommunityDivider />
+
 <div id="iedc-stories" className="scroll-mt-32">
   <Section title="IEDC Stories">
     <PlaceholderGrid items={stories} columns="md:grid-cols-2" height="h-40" />
@@ -126,7 +141,7 @@ export default function HomeContent() {
 
 <div id="iedc-tv" className="scroll-mt-32">
   <Section title="IEDC TV">
-    <PlaceholderGrid items={videos} columns="md:grid-cols-3" height="h-48" />
+    <PlaceholderGrid items={tvItems} columns="md:grid-cols-3" height="h-48" />
   </Section>
 </div>
     </section>
@@ -185,11 +200,46 @@ function VisionCard() {
   );
 }
 
+function CommunityDivider() {
+  return (
+    <motion.div
+      {...sectionAnimation}
+      className="relative left-1/2 right-1/2 -mx-[50vw] w-screen overflow-hidden"
+    >
+      <div className="relative h-[340px] md:h-[460px]">
+        <img
+          src="/images/community/community-divider.jpg"
+          alt="IEDC Community"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+
+        <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-black/35 to-[#050505]/20" />
+
+        <div className="absolute inset-0 bg-black/20" />
+
+        <div className="relative z-10 flex h-full items-end px-8 pb-10 md:px-14 md:pb-14">
+          <div className="max-w-3xl">
+            <p className="mb-4 text-xs uppercase tracking-[0.35em] text-white/45">
+              Community
+            </p>
+
+            <h2 className="text-3xl font-semibold leading-tight text-white md:text-5xl">
+              Innovation grows faster
+              <br />
+              when people build together.
+            </h2>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
 function Section({ title, children }) {
   return (
     <motion.div {...sectionAnimation}>
       <h2
-        className="mb-6 text-2xl font-semibold tracking-tight"
+        className="mb-8 text-2xl font-semibold tracking-tight md:text-3xl"
         style={{ color: "var(--text)" }}
       >
         {title}
@@ -204,8 +254,6 @@ function StartupCard({ title, description, image, href }) {
   return (
     <Link href={href} className="block">
       <div className="group relative cursor-pointer overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] transition-all duration-500 hover:-translate-y-1 hover:border-white/25">
-        <div className="pointer-events-none absolute inset-0 opacity-0 transition duration-500 group-hover:opacity-100 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.12),transparent_40%)]" />
-
         <div className="relative h-52 overflow-hidden">
           <img
             src={image}
@@ -261,14 +309,22 @@ function PlaceholderGrid({ items, columns, height }) {
       {items.map((item, index) => (
         <Link key={index} href={item.href} className="block">
           <div
-            className={`${height} group relative overflow-hidden rounded-xl border border-gray-800 bg-gray-900 transition-all duration-300 hover:-translate-y-1 hover:border-white/40`}
+            className={`${height} group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] transition-all duration-500 hover:-translate-y-1 hover:border-white/30`}
           >
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.10),transparent_40%)] opacity-0 transition duration-500 group-hover:opacity-100" />
-
+            {item.video && (
+  <video
+    src={item.video}
+    className="absolute inset-0 h-full w-full object-cover opacity-70 transition duration-500 group-hover:scale-105 group-hover:opacity-90"
+    muted
+    loop
+    playsInline
+    preload="metadata"
+  />
+)}
             <div className="absolute bottom-5 left-5 right-5">
               <p className="text-xs uppercase tracking-[0.3em] text-white/40">
-                IEDC SB
-              </p>
+  Campus Moment
+</p>
 
               <h3 className="mt-2 text-lg font-semibold text-white">
                 {item.title}
