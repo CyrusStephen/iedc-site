@@ -44,14 +44,14 @@ DEVELOPMENT CELL
   initial={{ opacity: 0, y: 30 }}
   animate={{ opacity: 1, y: 0 }}
   transition={{ duration: 0.8 }}
-  className="mb-6 text-4xl font-semibold leading-[1.08] tracking-tight md:text-7xl"
+  className="mb-6 text-4xl font-semibold leading-[1.15] tracking-tight md:text-7xl"
 >
   <span className="md:hidden">
     We are not here
     <br />
     to be something.
     <br />
-    <span className="text-gray-300">
+    <span className="text-gray-300 block mt-3">
       We are here to be
       <br />
       the right thing.
