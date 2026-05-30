@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function VisualDivider() {
   return (
-    <section className="relative w-full h-[80vh] overflow-hidden">
+    <section className="relative w-full h-[320px] md:h-[80vh] overflow-hidden">
        
 <Image
   src="/images/divider.jpg"
@@ -23,7 +23,7 @@ export default function VisualDivider() {
           <p className="text-sm uppercase tracking-widest opacity-70 mb-3">
             Innovation in Motion
           </p>
-          <h2 className="text-3xl md:text-5xl font-semibold leading-tight">
+          <h2 className="text-2xl md:text-5xl font-semibold leading-tight">
             Where ideas move beyond the classroom
           </h2>
         </div>
