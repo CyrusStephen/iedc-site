@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const roadmap = [
   {
@@ -11,6 +12,7 @@ const roadmap = [
     level: "Core",
     description:
       "Major meetings, yearly planning, co-lead interviews, website performance analysis, and clear duty assignment for leads and co-leads.",
+    image: "/images/community/iedc_2025_2026.jpeg",
     link: "/events/team-building",
   },
   {
@@ -20,7 +22,8 @@ const roadmap = [
     level: "Low Budget",
     description:
       "A student-focused idea sharing event where early thoughts, problems, and startup possibilities are discussed openly.",
-    link: "/events/idea-exchange",
+    image: "/images/iedc_events/ideaXchange.png",
+    link: "/events/iedc_events/ideaxchange",
   },
   {
     month: "August 2026",
@@ -29,7 +32,8 @@ const roadmap = [
     level: "Culture",
     description:
       "A seasonal campus bazaar during the Onam period, blending entrepreneurship, student stalls, and Kerala’s festive energy.",
-    link: "/events/onam-bazaar",
+    video: "/videos/iedc_events/onam-bazaar/only_onam_bazaar_front.mp4",
+    link: "/events/iedc_events/onam-bazaar",
   },
   {
     month: "September – October 2026",
@@ -38,7 +42,8 @@ const roadmap = [
     level: "Mid Budget",
     description:
       "A one-day hackathon designed for creative problem solving, practical thinking, and student collaboration.",
-    link: "/events/hackathon",
+    image: "/images/events/iedc_events/hackathon.jpg",
+    link: "/events/iedc_events/hackathon",
   },
   {
     month: "November 2026",
@@ -47,7 +52,8 @@ const roadmap = [
     level: "Community",
     description:
       "A second idea-focused event with a refreshed name and format, continuing the innovation cycle of the year.",
-    link: "/events/idea-exchange-2",
+    image: "/images/iedc_events/ideaXchange.png",
+    link: "/events/iedc_events/ideaxchange",
   },
   {
     month: "January 2027",
@@ -56,7 +62,8 @@ const roadmap = [
     level: "Major",
     description:
       "One of the biggest IEDC events of the year, planned with stronger hosting, higher budget, and larger campus visibility.",
-    link: "/events/gcc-3mt",
+    video: "/videos/iedc_events/gcc/only_gcc_front.mp4",
+    link: "/events/iedc_events/gcc",
     featured: true,
   },
   {
@@ -66,7 +73,8 @@ const roadmap = [
     level: "Major",
     description:
       "A major social-impact event focused on women empowerment, leadership, confidence, and meaningful campus conversations.",
-    link: "/events/women-empowerment",
+    image: "/images/events/iedc_events/women-empowerment.jpg",
+    link: "/events/iedc_events/women-empowerment",
     featured: true,
   },
 ];
@@ -133,7 +141,27 @@ function RoadmapCard({ item, index }) {
               : "border-white/10 bg-white/[0.03]"
           }`}
         >
-          <div className="h-56 bg-gradient-to-br from-white/[0.08] via-white/[0.03] to-transparent" />
+          <div className="relative h-56 overflow-hidden">
+  {item.video ? (
+    <video
+      src={item.video}
+      autoPlay
+      muted
+      loop
+      playsInline
+      className="h-full w-full object-cover"
+    />
+  ) : (
+    <Image
+      fill
+      src={item.image}
+      alt={item.title}
+      className="object-cover"
+    />
+  )}
+
+  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+</div>
 
           <div className="p-7">
             <p className="mb-3 text-xs uppercase tracking-[0.35em] text-white/40">

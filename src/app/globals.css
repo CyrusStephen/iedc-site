@@ -108,3 +108,32 @@ html {
       0 0 14px rgba(255,255,255,0.05);
   }
 }
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@keyframes gallery-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.gallery-track {
+  display: flex;
+  width: max-content;
+  animation: gallery-scroll 35s linear infinite;
+}
+
+.gallery-track:hover {
+  animation-play-state: paused;
+}
