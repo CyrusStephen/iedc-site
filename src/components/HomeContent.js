@@ -287,7 +287,7 @@ function CommunityDivider() {
   const images = [
     {
       src: "/images/community/iedc_2025_2026.jpeg",
-      style: "object-cover object-center scale-100",
+      style: "object-contain md:object-cover object-center scale-100",
       year: "2025-26",
     },
   ];
@@ -307,7 +307,7 @@ function CommunityDivider() {
       {...sectionAnimation}
       className="relative left-1/2 right-1/2 -mx-[50vw] w-screen overflow-hidden"
     >
-      <div className="group relative h-[450px] md:h-[670px] cursor-pointer overflow-hidden">
+      <div className="group relative h-[360px] bg-black md:h-[670px] cursor-pointer overflow-hidden">
         <img
           src={images[currentImage]?.src}
           alt="IEDC Community"

@@ -175,16 +175,31 @@
 
 @media (max-width: 900px) {
   .iedc-footer-inner {
-    padding: 56px 24px 40px;
+    padding: 48px 24px 40px;
   }
 
   .iedc-footer-top {
-    grid-template-columns: 1fr;
-    gap: 36px;
+    grid-template-columns: 1fr 1fr;
+    gap: 34px 28px;
   }
 
   .iedc-brand {
-    align-items: flex-start;
+    grid-column: 1 / -1;
+    align-items: center;
+  }
+
+  .iedc-empty-column {
+    display: none;
+  }
+
+  .iedc-column h3 {
+    margin-bottom: 14px;
+  }
+
+  .iedc-column p,
+  .iedc-column a {
+    font-size: 15px;
+    margin-bottom: 10px;
   }
 
   .iedc-footer-bottom {
