@@ -202,7 +202,7 @@ John Joji
     <img
       src="/images/iedc_events/gcc/gcc-winners.jpeg"
       alt="Ideathon Winners"
-      className="h-[580px] w-full object-cover md:h-[740px]"
+      className="h-auto w-full object-contain"
     />
   </div>
   </div>

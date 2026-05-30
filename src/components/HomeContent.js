@@ -206,14 +206,10 @@ export default function HomeContent() {
       </motion.div>
 
       <div id="student-startups" className="scroll-mt-32">
-        <Section title="Student Businesses and Startups">
-          <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
-            {startups.map((startup, index) => (
-              <StartupCard key={index} {...startup} />
-            ))}
-          </div>
-        </Section>
-      </div>
+  <Section title="Student Businesses and Startups">
+    <HorizontalCardSlider items={startups} hideMeta />
+  </Section>
+</div>
 
       <div id="collaborations" className="scroll-mt-32">
         <Section title="Collaborations">
@@ -367,34 +363,6 @@ function Section({ title, children }) {
   );
 }
 
-function StartupCard({ title, description, image, href }) {
-  return (
-    <Link href={href} className="block">
-      <div className="group overflow-hidden rounded-2xl bg-white/[0.03] text-white shadow-xl transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl">
-        <div className="relative h-64 overflow-hidden bg-black/10">
-          <img
-            src={image}
-            alt={title}
-            className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
-          />
-        </div>
-
-        <div className="flex h-[170px] flex-col p-6">
-          <h3 className="text-lg font-bold leading-snug">{title}</h3>
-
-          <p className="mt-3 line-clamp-2 text-sm leading-6 text-white/60">
-            {description}
-          </p>
-
-          <p className="mt-auto text-sm font-bold text-white/70 transition group-hover:text-white">
-            → View Project
-          </p>
-        </div>
-      </div>
-    </Link>
-  );
-}
-
 function InfoCard({ title, description }) {
   return (
     <div  className="rounded-2xl border p-8 min-h-[150px] transition-all duration-300 hover:-translate-y-1"
@@ -412,7 +380,11 @@ function InfoCard({ title, description }) {
   );
 }
 
-function HorizontalCardSlider({ items, imageHeight }) {
+function HorizontalCardSlider({
+  items,
+  imageHeight,
+  hideMeta = false,
+}) {
   const scrollAmount = 420;
   const sliderId = `slider-${items[0]?.title
     ?.replace(/\s+/g, "-")
@@ -481,12 +453,14 @@ function HorizontalCardSlider({ items, imageHeight }) {
                   {item.description}
                 </p>
 
-                <div className="mt-auto flex items-center justify-between text-xs font-bold uppercase tracking-wide text-white/55">
-                  <span>{item.label}</span>
-                  <span className="normal-case font-medium">
-                    {item.readTime}
-                  </span>
-                </div>
+                {!hideMeta && (
+                  <div className="mt-auto flex items-center justify-between text-xs font-bold uppercase tracking-wide text-white/55">
+                    <span>{item.label}</span>
+                    <span className="normal-case font-medium">
+                      {item.readTime}
+                    </span>
+                  </div>
+                )}
               </div>
             </div>
           </Link>

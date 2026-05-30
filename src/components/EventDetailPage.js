@@ -48,7 +48,7 @@ const toggleMute = () => {
     loop
     playsInline
     muted={isMuted}
-    className="h-[620px] w-full object-cover md:h-[605px]"
+    className="h-[50vh] w-full object-contain md:h-[605px] md:object-cover"
   />
 <button
   type="button"
