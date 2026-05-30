@@ -7,7 +7,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-[88vh] items-center justify-center overflow-hidden"
+      className="relative flex min-h-[82vh] items-center justify-center overflow-hidden md:min-h-screen"
     >
       {/* Background video/image layer */}
       <div className="absolute inset-0 z-0">
@@ -28,7 +28,7 @@ export default function Hero() {
 
 
       {/* Content */}
-      <div className="relative z-10 max-w-5xl px-6 pt-20 text-center md:pt-24">
+      <div className="relative z-10 max-w-5xl px-6 pt-16 text-center md:pt-24">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -41,17 +41,31 @@ DEVELOPMENT CELL
         </motion.p>
 
         <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="mb-6 text-5xl font-semibold leading-[1.1] tracking-tight md:text-7xl"
-        >
-          We are not here to be something.
-          <br className="hidden md:block" />
-          <span className="text-gray-300">
-            We are here to be the right thing.
-          </span>
-        </motion.h1>
+  initial={{ opacity: 0, y: 30 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.8 }}
+  className="mb-6 text-4xl font-semibold leading-[1.08] tracking-tight md:text-7xl"
+>
+  <span className="md:hidden">
+    We are not here
+    <br />
+    to be something.
+    <br />
+    <span className="text-gray-300">
+      We are here to be
+      <br />
+      the right thing.
+    </span>
+  </span>
+
+  <span className="hidden md:inline">
+    We are not here to be something.
+    <br />
+    <span className="text-gray-300">
+      We are here to be the right thing.
+    </span>
+  </span>
+</motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
