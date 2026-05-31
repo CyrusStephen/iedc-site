@@ -1,0 +1,228 @@
+coLeads: [
+      {
+        id: "lakshmi-co-lead-w",
+        name: "Co-Lead W",
+        role: "Documentation Co-Lead",
+        classDept: "Class • Department",
+        description: "Supporting documentation and reporting.",
+        image: "/images/team/person.jpg",
+      },
+      {
+        id: "lakshmi-co-lead-x",
+        name: "Co-Lead X",
+        role: "Documentation Co-Lead",
+        classDept: "Class • Department",
+        description: "Supporting documentation and reporting.",
+        image: "/images/team/person.jpg",
+      },
+    ],
+
+
+coLeads: [
+      {
+        id: "elvin-co-lead-u",
+        name: "Co-Lead U",
+        role: "Documentation Co-Lead",
+        classDept: "Class • Department",
+        description: "Supporting documentation and reporting.",
+        image: "/images/team/person.jpg",
+      },
+      {
+        id: "elvin-co-lead-v",
+        name: "Co-Lead V",
+        role: "Documentation Co-Lead",
+        classDept: "Class • Department",
+        description: "Supporting documentation and reporting.",
+        image: "/images/team/person.jpg",
+      },
+    ],
+
+    coLeads: [
+      {
+        id: "suhail-co-lead-s",
+        name: "Co-Lead S",
+        role: "IPR & Research Co-Lead",
+        classDept: "Class • Department",
+        description: "Supporting research and IPR-related initiatives.",
+        image: "/images/team/person.jpg",
+      },
+      {
+        id: "suhail-co-lead-t",
+        name: "Co-Lead T",
+        role: "IPR & Research Co-Lead",
+        classDept: "Class • Department",
+        description: "Supporting research and IPR-related initiatives.",
+        image: "/images/team/person.jpg",
+      },
+    ],
+
+coLeads: [
+      {
+        id: "jeeva-co-lead-q",
+        name: "Co-Lead Q",
+        role: "Women Innovation Co-Lead",
+        classDept: "Class • Department",
+        description: "Supporting women-led innovation initiatives.",
+        image: "/images/team/person.jpg",
+      },
+      {
+        id: "jeeva-co-lead-r",
+        name: "Co-Lead R",
+        role: "Women Innovation Co-Lead",
+        classDept: "Class • Department",
+        description: "Supporting women-led innovation initiatives.",
+        image: "/images/team/person.jpg",
+      },
+    ],
+
+    coLeads: [
+      {
+        id: "krishnethu-co-lead-o",
+        name: "Co-Lead O",
+        role: "Community Co-Lead",
+        classDept: "Class • Department",
+        description: "Supporting community engagement and participation.",
+        image: "/images/team/person.jpg",
+      },
+      {
+        id: "krishnethu-co-lead-p",
+        name: "Co-Lead P",
+        role: "Community Co-Lead",
+        classDept: "Class • Department",
+        description: "Supporting community engagement and participation.",
+        image: "/images/team/person.jpg",
+      },
+    ],
+    
+coLeads: [
+      {
+        id: "alen-co-lead-m",
+        name: "Co-Lead M",
+        role: "Branding & Marketing Co-Lead",
+        classDept: "Class • Department",
+        description: "Supporting campaigns, visuals, and communication.",
+        image: "/images/team/person.jpg",
+      },
+      {
+        id: "alen-co-lead-n",
+        name: "Co-Lead N",
+        role: "Branding & Marketing Co-Lead",
+        classDept: "Class • Department",
+        description: "Supporting campaigns, visuals, and communication.",
+        image: "/images/team/person.jpg",
+      },
+    ],
+
+    coLeads: [
+      {
+        id: "liyo-co-lead-k",
+        name: "Co-Lead K",
+        role: "Technology Co-Lead",
+        classDept: "Class • Department",
+        description: "Supporting technical systems and digital execution.",
+        image: "/images/team/person.jpg",
+      },
+      {
+        id: "liyo-co-lead-l",
+        name: "Co-Lead L",
+        role: "Technology Co-Lead",
+        classDept: "Class • Department",
+        description: "Supporting technical systems and digital execution.",
+        image: "/images/team/person.jpg",
+      },
+    ],
+
+    coLeads: [
+      {
+        id: "thomas-co-lead-i",
+        name: "Co-Lead I",
+        role: "Creative & Innovation Co-Lead",
+        classDept: "Class • Department",
+        description: "Supporting creative ideas and innovation activities.",
+        image: "/images/team/person.jpg",
+      },
+      {
+        id: "thomas-co-lead-j",
+        name: "Co-Lead J",
+        role: "Creative & Innovation Co-Lead",
+        classDept: "Class • Department",
+        description: "Supporting creative ideas and innovation activities.",
+        image: "/images/team/person.jpg",
+      },
+    ],
+
+    coLeads: [
+      {
+        id: "zacharias-co-lead-g",
+        name: "Co-Lead G",
+        role: "Finance Co-Lead",
+        classDept: "Class • Department",
+        description: "Supporting finance tracking and planning.",
+        image: "/images/team/person.jpg",
+      },
+      {
+        id: "zacharias-co-lead-h",
+        name: "Co-Lead H",
+        role: "Finance Co-Lead",
+        classDept: "Class • Department",
+        description: "Supporting finance tracking and planning.",
+        image: "/images/team/person.jpg",
+      },
+    ],
+
+    coLeads: [
+      {
+        id: "adithya-co-lead-e",
+        name: "Co-Lead E",
+        role: "Quality & Operations Co-Lead",
+        classDept: "Class • Department",
+        description: "Supporting operations and execution quality.",
+        image: "/images/team/person.jpg",
+      },
+      {
+        id: "adithya-co-lead-f",
+        name: "Co-Lead F",
+        role: "Quality & Operations Co-Lead",
+        classDept: "Class • Department",
+        description: "Supporting operations and execution quality.",
+        image: "/images/team/person.jpg",
+      },
+    ],
+
+coLeads: [
+      {
+        id: "cyrus-co-lead-c",
+        name: "Co-Lead C",
+        role: "Co-Lead",
+        classDept: "Class • Department",
+        description: "Supporting team coordination and execution.",
+        image: "/images/team/person.jpg",
+      },
+      {
+        id: "cyrus-co-lead-d",
+        name: "Co-Lead D",
+        role: "Co-Lead",
+        classDept: "Class • Department",
+        description: "Supporting team coordination and execution.",
+        image: "/images/team/person.jpg",
+      },
+    ],
+
+    coLeads: [
+      {
+        id: "vivin-co-lead-a",
+        name: "Co-Lead A",
+        role: "Co-Lead",
+        classDept: "Class • Department",
+        description: "Supporting student leadership and execution.",
+        image: "/images/team/person.jpg",
+      },
+      {
+        id: "vivin-co-lead-b",
+        name: "Co-Lead B",
+        role: "Co-Lead",
+        classDept: "Class • Department",
+        description: "Supporting student leadership and execution.",
+        image: "/images/team/person.jpg",
+      },
+    ],                
