@@ -159,7 +159,7 @@ const coLeads = [
   {
     id: "adithya-co-lead-e",
     leadKey: "adithya",
-    name: "Co-Lead E",
+    name: "Co-Lead",
     role: "Quality & Operations Co-Lead",
     classDept: "Class • Department",
     image: "/images/team/person.jpg",
@@ -167,7 +167,7 @@ const coLeads = [
   {
     id: "adithya-co-lead-f",
     leadKey: "adithya",
-    name: "Co-Lead F",
+    name: "Co-Lead",
     role: "Quality & Operations Co-Lead",
     classDept: "Class • Department",
     image: "/images/team/person.jpg",
@@ -191,7 +191,7 @@ const coLeads = [
   {
     id: "thomas-co-lead-i",
     leadKey: "thomas",
-    name: "Co-Lead I",
+    name: "Co-Lead",
     role: "Creative & Innovation Co-Lead",
     classDept: "Class • Department",
     image: "/images/team/person.jpg",
@@ -199,7 +199,7 @@ const coLeads = [
   {
     id: "thomas-co-lead-j",
     leadKey: "thomas",
-    name: "Co-Lead J",
+    name: "Co-Lead",
     role: "Creative & Innovation Co-Lead",
     classDept: "Class • Department",
     image: "/images/team/person.jpg",
@@ -223,7 +223,7 @@ const coLeads = [
   {
     id: "alen-co-lead-m",
     leadKey: "alen",
-    name: "Co-Lead M",
+    name: "Co-Lead",
     role: "Branding & Marketing Co-Lead",
     classDept: "Class • Department",
     image: "/images/team/person.jpg",
@@ -231,7 +231,7 @@ const coLeads = [
   {
     id: "alen-co-lead-n",
     leadKey: "alen",
-    name: "Co-Lead N",
+    name: "Co-Lead",
     role: "Branding & Marketing Co-Lead",
     classDept: "Class • Department",
     image: "/images/team/person.jpg",
@@ -239,7 +239,7 @@ const coLeads = [
   {
     id: "krishnethu-co-lead-o",
     leadKey: "krishnethu",
-    name: "Co-Lead O",
+    name: "Co-Lead",
     role: "Community Co-Lead",
     classDept: "Class • Department",
     image: "/images/team/person.jpg",
@@ -247,7 +247,7 @@ const coLeads = [
   {
     id: "krishnethu-co-lead-p",
     leadKey: "krishnethu",
-    name: "Co-Lead P",
+    name: "Co-Lead",
     role: "Community Co-Lead",
     classDept: "Class • Department",
     image: "/images/team/person.jpg",
@@ -255,7 +255,7 @@ const coLeads = [
   {
     id: "jeeva-co-lead-q",
     leadKey: "jeeva",
-    name: "Co-Lead Q",
+    name: "Co-Lead",
     role: "Women Innovation Co-Lead",
     classDept: "Class • Department",
     image: "/images/team/person.jpg",
@@ -263,7 +263,7 @@ const coLeads = [
   {
     id: "jeeva-co-lead-r",
     leadKey: "jeeva",
-    name: "Co-Lead R",
+    name: "Co-Lead",
     role: "Women Innovation Co-Lead",
     classDept: "Class • Department",
     image: "/images/team/person.jpg",
@@ -271,7 +271,7 @@ const coLeads = [
   {
     id: "suhail-co-lead-s",
     leadKey: "suhail",
-    name: "Co-Lead S",
+    name: "Co-Lead",
     role: "IPR & Research Co-Lead",
     classDept: "Class • Department",
     image: "/images/team/person.jpg",
@@ -279,7 +279,7 @@ const coLeads = [
   {
     id: "suhail-co-lead-t",
     leadKey: "suhail",
-    name: "Co-Lead T",
+    name: "Co-Lead",
     role: "IPR & Research Co-Lead",
     classDept: "Class • Department",
     image: "/images/team/person.jpg",
@@ -287,7 +287,7 @@ const coLeads = [
   {
     id: "elvin-co-lead-u",
     leadKey: "elvin",
-    name: "Co-Lead U",
+    name: "Co-Lead",
     role: "Documentation Co-Lead",
     classDept: "Class • Department",
     image: "/images/team/person.jpg",
@@ -295,7 +295,7 @@ const coLeads = [
   {
     id: "elvin-co-lead-v",
     leadKey: "elvin",
-    name: "Co-Lead V",
+    name: "Co-Lead",
     role: "Documentation Co-Lead",
     classDept: "Class • Department",
     image: "/images/team/person.jpg",
@@ -303,7 +303,7 @@ const coLeads = [
   {
     id: "lakshmi-co-lead-w",
     leadKey: "lakshmi",
-    name: "Co-Lead W",
+    name: "Co-Lead",
     role: "Documentation Co-Lead",
     classDept: "Class • Department",
     image: "/images/team/person.jpg",
@@ -311,7 +311,7 @@ const coLeads = [
   {
     id: "lakshmi-co-lead-x",
     leadKey: "lakshmi",
-    name: "Co-Lead X",
+    name: "Co-Lead",
     role: "Documentation Co-Lead",
     classDept: "Class • Department",
     image: "/images/team/person.jpg",
@@ -447,7 +447,7 @@ function TeamSection({
   className={
     isMentors
       ? "grid gap-6 md:grid-cols-2"
-      : "grid gap-6 md:grid-cols-4"
+      : "grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
   }
 >
         {people.map((person) => {
@@ -475,81 +475,122 @@ function TeamCard({ person, isMentor, coLeads, isOpen, onToggle }) {
   const hasCoLeads = coLeads.length > 0;
 
   return (
-    <article className="group overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] transition-all duration-500 hover:-translate-y-1 hover:border-white/25">
-      <div className="relative h-52 overflow-hidden bg-white/[0.04]">
-        <img
-          src={person.image}
-          alt={person.name}
-          className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
-        />
-      </div>
-
-      <div className="flex h-[230px] flex-col p-6">
-        <p
-          className="text-xs font-medium uppercase tracking-[0.25em]"
-          style={{
-            color: person.highlight ? "var(--accent)" : "var(--muted)",
-          }}
-        >
-          {person.role}
-        </p>
-
-        <h3
-          className="mt-3 text-xl font-semibold tracking-tight"
-          style={{ color: "var(--text)" }}
-        >
-          {person.name}
-        </h3>
-
-        {person.classDept && (
-          <p className="mt-2 text-sm" style={{ color: "var(--accent)" }}>
-            {person.classDept}
-          </p>
-        )}
-
-        <p
-          className="mt-4 line-clamp-2 text-sm leading-6"
-          style={{ color: "var(--muted)" }}
-        >
-          {person.description}
-        </p>
-
-        {!isMentor && hasCoLeads && (
-          <button
-  type="button"
-  onClick={onToggle}
-  className="mt-auto inline-flex items-center justify-between rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-white transition-all duration-300 hover:border-white/25 hover:bg-white/[0.06]"
->
-  <span>View Co-Leads</span>
-  <span>{isOpen ? "−" : "+"}</span>
-</button>
-        )}
-      </div>
-
-      {!isMentor && hasCoLeads && isOpen && (
+  <article className="group [perspective:1200px]">
+    <div
+      className={`relative min-h-[455px] rounded-2xl transition-transform duration-700 [transform-style:preserve-3d] ${
+        isOpen ? "[transform:rotateY(180deg)]" : ""
+      }`}
+    >
+      {/* Front side */}
+      <div className="absolute inset-0 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] [backface-visibility:hidden]">
         <div
-          className="grid gap-3 border-t p-4"
-          style={{ borderColor: "var(--border)" }}
+          className={
+            isMentor
+              ? "relative h-52 overflow-hidden bg-white/[0.04]"
+              : "relative h-48 overflow-hidden bg-black/10"
+          }
         >
-          {coLeads.map((coLead) => (
-            <CoLeadMiniCard key={coLead.id} coLead={coLead} />
-          ))}
+          <img
+            src={person.image}
+            alt={person.name}
+            className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+          />
+        </div>
+
+        <div
+          className={
+            isMentor
+              ? "flex h-[230px] flex-col p-6"
+              : "flex min-h-[230px] flex-col p-5 sm:p-6"
+          }
+        >
+          <p
+            className="min-h-[40px] text-xs font-medium uppercase tracking-[0.25em]"
+            style={{
+              color: person.highlight ? "var(--accent)" : "var(--muted)",
+            }}
+          >
+            {person.role}
+          </p>
+
+          <h3
+            className="mt-3 text-xl font-semibold tracking-tight"
+            style={{ color: "var(--text)" }}
+          >
+            {person.name}
+          </h3>
+
+          {person.classDept && (
+            <p className="mt-2 text-sm" style={{ color: "var(--accent)" }}>
+              {person.classDept}
+            </p>
+          )}
+
+          <p
+  className="mt-4 h-[60px] text-sm leading-6"
+            style={{ color: "var(--muted)" }}
+          >
+            {person.description}
+          </p>
+
+          {!isMentor && hasCoLeads && (
+            <button
+              type="button"
+              onClick={onToggle}
+              className="mt-auto inline-flex items-center justify-between rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-white transition-all duration-300 hover:border-white/25 hover:bg-white/[0.06]"
+            >
+              <span>View Co-Leads</span>
+              <span>+</span>
+            </button>
+          )}
+        </div>
+      </div>
+
+      {/* Back side */}
+      {!isMentor && hasCoLeads && (
+        <div className="absolute inset-0 overflow-hidden rounded-2xl border border-white/10 bg-[#101010] p-6 [backface-visibility:hidden] [transform:rotateY(180deg)]">
+          <div className="mb-5 flex items-center justify-between">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-white/45">
+                Co-Leads
+              </p>
+
+              <h3 className="mt-2 text-xl font-semibold text-white">
+                {person.name}
+              </h3>
+            </div>
+
+            <button
+              type="button"
+              onClick={onToggle}
+              className="rounded-full border border-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-white/70 transition hover:border-white/30 hover:text-white"
+            >
+              Back
+            </button>
+          </div>
+
+          <div className="grid gap-4">
+            {coLeads.map((coLead) => (
+              <CoLeadMiniCard key={coLead.id} coLead={coLead} />
+            ))}
+          </div>
         </div>
       )}
-    </article>
-  );
+    </div>
+  </article>
+);
 }
 
 function CoLeadMiniCard({ coLead }) {
   return (
     <div
-      className="grid grid-cols-[52px_1fr] gap-3 rounded-2xl border p-3"
+      className="grid min-h-[135px] grid-cols-[95px_1fr] items-center gap-5 rounded-2xl border p-5"
       style={{
         borderColor: "var(--border)",
         background: "rgba(255,255,255,0.03)",
       }}
     >
-      <div className="h-13 w-13 overflow-hidden rounded-xl">
+      <div className="h-[105px] w-[105px] overflow-hidden rounded-2xl bg-white/[0.04]">
         <img
           src={coLead.image}
           alt={coLead.name}
@@ -557,22 +598,22 @@ function CoLeadMiniCard({ coLead }) {
         />
       </div>
 
-      <div>
+      <div className="min-w-0">
         <p
-          className="text-[10px] font-medium uppercase tracking-[0.18em]"
-          style={{ color: "var(--muted)" }}
-        >
-          {coLead.role}
-        </p>
+  className="line-clamp-2 text-[11px] font-semibold uppercase tracking-[0.15em] leading-4"
+  style={{ color: "var(--muted)" }}
+>
+  {coLead.role}
+</p>
 
         <h4
-          className="mt-1 text-sm font-semibold"
+          className="mt-2 text-lg font-semibold leading-tight"
           style={{ color: "var(--text)" }}
         >
           {coLead.name}
         </h4>
 
-        <p className="mt-1 text-xs" style={{ color: "var(--accent)" }}>
+        <p className="mt-2 text-sm" style={{ color: "var(--accent)" }}>
           {coLead.classDept}
         </p>
       </div>
