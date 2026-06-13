@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import CampusMapSection from "@/components/CampusMapSection";
 import { useEffect, useState } from "react";
+import { supabase } from "@/utils/supabase/client";
 
 const sectionAnimation = {
   initial: { opacity: 0, y: 28 },
@@ -178,6 +179,91 @@ const tvItems = [
 ];
 
 export default function HomeContent() {
+  const [dbCollaborations, setDbCollaborations] = useState(collaborations);
+  const [dbStories, setDbStories] = useState(stories);
+  const [dbEvents, setDbEvents] = useState(events);
+  const [dbTvItems, setDbTvItems] = useState(tvItems);
+
+  useEffect(() => {
+    async function fetchCMSData() {
+      try {
+        // Fetch collaborations
+        const { data: colData } = await supabase
+          .from("collaborations")
+          .select("*")
+          .order("created_at", { ascending: false });
+        if (colData && colData.length > 0) {
+          const mapped = colData.map(c => ({
+            label: c.label || "Partner",
+            title: c.title,
+            image: c.image || undefined,
+            description: c.description || "",
+            href: c.href || "#",
+            readTime: c.read_time || "Partner",
+          }));
+          setDbCollaborations([...mapped, ...collaborations]);
+        }
+
+        // Fetch stories
+        const { data: storyData } = await supabase
+          .from("stories")
+          .select("*")
+          .order("created_at", { ascending: false });
+        if (storyData && storyData.length > 0) {
+          const mappedStories = storyData.map(s => ({
+            label: s.label || "Story",
+            title: s.title,
+            description: s.description || "",
+            href: s.href || "/stories",
+            image: s.image || undefined,
+            readTime: s.read_time || "4 min read",
+          }));
+          setDbStories([...mappedStories, ...stories]);
+        }
+
+        // Fetch events
+        const { data: eventData } = await supabase
+          .from("events")
+          .select("*")
+          .order("event_date", { ascending: false });
+        if (eventData && eventData.length > 0) {
+          const mappedEvents = eventData.map(e => ({
+            label: e.label || "Event",
+            title: e.title,
+            href: `/events/iedc_events/${e.slug}`,
+            image: e.banner_image_url || undefined,
+            video: e.video_url || undefined,
+            description: e.short_description || "",
+            readTime: e.date_string || e.read_time || "5 min read",
+          }));
+          setDbEvents([...mappedEvents, ...events]);
+        }
+
+        // Fetch TV items
+        const { data: tvData } = await supabase
+          .from("tv_items")
+          .select("*")
+          .order("created_at", { ascending: false });
+        if (tvData && tvData.length > 0) {
+          const mappedTv = tvData.map(t => ({
+            label: t.label || "Coming Soon",
+            title: t.title,
+            href: t.href || "/tv",
+            image: t.image || undefined,
+            video: t.video || undefined,
+            description: t.description || "",
+            readTime: t.read_time || "Coming Soon",
+          }));
+          setDbTvItems([...mappedTv, ...tvItems]);
+        }
+      } catch (err) {
+        console.error("Error loading CMS data from Supabase:", err);
+      }
+    }
+
+    fetchCMSData();
+  }, []);
+
   return (
     <section
       id="our-mission"
@@ -207,16 +293,50 @@ export default function HomeContent() {
 
       <div id="student-startups" className="scroll-mt-32">
   <Section title="Student Businesses and Startups">
-    <HorizontalCardSlider items={startups} hideMeta />
+    <HorizontalCardSlider
+      items={startups}
+      hideMeta
+      itemWidth="w-[86%] sm:w-[48%] lg:w-[31.5%]"
+    />
+    <div className="mt-4 flex justify-center">
+      <Link
+        href="/get-involved?form=showcase"
+        className="group inline-flex items-center text-sm font-medium transition hover:text-white"
+        style={{ color: "var(--accent)" }}
+      >
+        <span className="relative">
+          Wanna showcase your startup/business on our platform? Submit Details
+          <span className="absolute left-0 -bottom-1 h-[1.5px] w-0 bg-[var(--accent)] transition-all duration-300 group-hover:w-full" />
+        </span>
+        <span className="ml-1 transition-transform duration-300 group-hover:translate-x-1">
+          ↗
+        </span>
+      </Link>
+    </div>
   </Section>
 </div>
 
       <div id="collaborations" className="scroll-mt-32">
         <Section title="Collaborations">
           <div className="grid gap-6 md:grid-cols-3">
-            {collaborations.map((item, index) => (
+            {dbCollaborations.map((item, index) => (
               <InfoCard key={index} {...item} />
             ))}
+          </div>
+          <div className="mt-8 flex justify-center">
+            <Link
+              href="/get-involved?form=partner"
+              className="group inline-flex items-center text-sm font-medium transition hover:text-white"
+              style={{ color: "var(--accent)" }}
+            >
+              <span className="relative">
+                Wanna collaborate or partner with us? Partner Today
+                <span className="absolute left-0 -bottom-1 h-[1.5px] w-0 bg-[var(--accent)] transition-all duration-300 group-hover:w-full" />
+              </span>
+              <span className="ml-1 transition-transform duration-300 group-hover:translate-x-1">
+                ↗
+              </span>
+            </Link>
           </div>
         </Section>
       </div>
@@ -229,21 +349,21 @@ export default function HomeContent() {
 
       <div id="iedc-stories" className="scroll-mt-32">
         <Section title="IEDC Stories">
-          <HorizontalCardSlider items={stories} />
+          <HorizontalCardSlider items={dbStories} actionText="Check out on Instagram" />
         </Section>
       </div>
 
       <div id="iedc-events" className="scroll-mt-32">
         <Section title="IEDC Events">
-          <HorizontalCardSlider items={events} />
+          <HorizontalCardSlider items={dbEvents} actionText="Check out on LinkedIn" />
         </Section>
       </div>
 
       <div id="iedc-tv" className="scroll-mt-32">
-  <Section title="IEDC TV">
-    <HorizontalCardSlider items={tvItems} />
-  </Section>
-</div>
+        <Section title="IEDC TV">
+          <HorizontalCardSlider items={dbTvItems} actionText="Check out on Youtube" />
+        </Section>
+      </div>
     </section>
   );
 }
@@ -384,6 +504,8 @@ function HorizontalCardSlider({
   items,
   imageHeight,
   hideMeta = false,
+  itemWidth = "w-[86%] sm:w-[48%] lg:w-[24%]",
+  actionText,
 }) {
   const scrollAmount = 420;
   const sliderId = `slider-${items[0]?.title
@@ -418,9 +540,9 @@ function HorizontalCardSlider({
           <Link
             key={index}
             href={item.href}
-            className="min-w-[86%] sm:min-w-[48%] lg:min-w-[24%]"
+            className={`${itemWidth} shrink-0 block group`}
           >
-            <div className="group overflow-hidden rounded-2xl bg-white/[0.03] text-white shadow-lg transition-all duration-500 hover:-translate-y-1 hover:shadow-xl">
+            <div className="overflow-hidden rounded-2xl bg-white/[0.03] text-white shadow-lg transition-all duration-500 group-hover:-translate-y-1 group-hover:shadow-xl">
               <div className={`relative ${imageHeight || "h-48"} overflow-hidden bg-black/10`}
 >
                 {item.video && (
@@ -463,6 +585,18 @@ function HorizontalCardSlider({
                 )}
               </div>
             </div>
+
+            {actionText && (
+              <div
+                className="mt-4 inline-flex text-sm font-medium ml-5 sm:ml-6"
+                style={{ color: "var(--accent)" }}
+              >
+                <span className="relative">
+                  {actionText}
+                  <span className="absolute left-0 -bottom-1 h-[1.5px] w-0 bg-[var(--accent)] transition-all duration-300 group-hover:w-full" />
+                </span>
+              </div>
+            )}
           </Link>
         ))}
       </div>

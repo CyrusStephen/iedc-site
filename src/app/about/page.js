@@ -2,6 +2,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const mentors = [
   {
@@ -127,15 +128,14 @@ const coLeads = [
   {
     id: "vivin-co-lead-a",
     leadKey: "vivin",
-    name: "Co-Lead A",
-    role: "Co-Lead",
+    name: "Co-Lead",
     classDept: "Class • Department",
     image: "/images/team/person.jpg",
   },
   {
     id: "vivin-co-lead-b",
     leadKey: "vivin",
-    name: "Co-Lead B",
+    name: "Co-Lead",
     role: "Co-Lead",
     classDept: "Class • Department",
     image: "/images/team/person.jpg",
@@ -144,15 +144,13 @@ const coLeads = [
     id: "cyrus-co-lead-c",
     leadKey: "cyrus",
     name: "Co-Lead C",
-    role: "Co-Lead",
     classDept: "Class • Department",
     image: "/images/team/person.jpg",
   },
   {
     id: "cyrus-co-lead-d",
     leadKey: "cyrus",
-    name: "Co-Lead D",
-    role: "Co-Lead",
+    name: "Co-Lead",
     classDept: "Class • Department",
     image: "/images/team/person.jpg",
   },
@@ -160,7 +158,6 @@ const coLeads = [
     id: "adithya-co-lead-e",
     leadKey: "adithya",
     name: "Co-Lead",
-    role: "Quality & Operations Co-Lead",
     classDept: "Class • Department",
     image: "/images/team/person.jpg",
   },
@@ -168,22 +165,20 @@ const coLeads = [
     id: "adithya-co-lead-f",
     leadKey: "adithya",
     name: "Co-Lead",
-    role: "Quality & Operations Co-Lead",
     classDept: "Class • Department",
     image: "/images/team/person.jpg",
   },
   {
     id: "zacharias-co-lead-g",
     leadKey: "zacharias",
-    name: "Co-Lead G",
-    role: "Finance Co-Lead",
+    name: "Co-Lead",
     classDept: "Class • Department",
     image: "/images/team/person.jpg",
   },
   {
     id: "zacharias-co-lead-h",
     leadKey: "zacharias",
-    name: "Co-Lead H",
+    name: "Co-Lead",
     role: "Finance Co-Lead",
     classDept: "Class • Department",
     image: "/images/team/person.jpg",
@@ -192,7 +187,6 @@ const coLeads = [
     id: "thomas-co-lead-i",
     leadKey: "thomas",
     name: "Co-Lead",
-    role: "Creative & Innovation Co-Lead",
     classDept: "Class • Department",
     image: "/images/team/person.jpg",
   },
@@ -475,107 +469,124 @@ function TeamCard({ person, isMentor, coLeads, isOpen, onToggle }) {
   const hasCoLeads = coLeads.length > 0;
 
   return (
-  <article className="group [perspective:1200px]">
-    <div
-      className={`relative min-h-[455px] rounded-2xl transition-transform duration-700 [transform-style:preserve-3d] ${
-        isOpen ? "[transform:rotateY(180deg)]" : ""
-      }`}
-    >
-      {/* Front side */}
-      <div className="absolute inset-0 overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] [backface-visibility:hidden]">
-        <div
-          className={
-            isMentor
-              ? "relative h-52 overflow-hidden bg-white/[0.04]"
-              : "relative h-48 overflow-hidden bg-black/10"
-          }
-        >
-          <img
-            src={person.image}
-            alt={person.name}
-            className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
-          />
-        </div>
-
-        <div
-          className={
-            isMentor
-              ? "flex h-[230px] flex-col p-6"
-              : "flex min-h-[230px] flex-col p-5 sm:p-6"
-          }
-        >
-          <p
-            className="min-h-[40px] text-xs font-medium uppercase tracking-[0.25em]"
-            style={{
-              color: person.highlight ? "var(--accent)" : "var(--muted)",
-            }}
+  <article className="group">
+    <div className="relative min-h-[455px] overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
+      <AnimatePresence mode="wait">
+        {!isOpen ? (
+          <motion.div
+            key="lead"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.25 }}
           >
-            {person.role}
-          </p>
-
-          <h3
-            className="mt-3 text-xl font-semibold tracking-tight"
-            style={{ color: "var(--text)" }}
-          >
-            {person.name}
-          </h3>
-
-          {person.classDept && (
-            <p className="mt-2 text-sm" style={{ color: "var(--accent)" }}>
-              {person.classDept}
-            </p>
-          )}
-
-          <p
-  className="mt-4 h-[60px] text-sm leading-6"
-            style={{ color: "var(--muted)" }}
-          >
-            {person.description}
-          </p>
-
-          {!isMentor && hasCoLeads && (
-            <button
-              type="button"
-              onClick={onToggle}
-              className="mt-auto inline-flex items-center justify-between rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-white transition-all duration-300 hover:border-white/25 hover:bg-white/[0.06]"
+            <div
+              className={
+                isMentor
+                  ? "relative h-52 overflow-hidden bg-white/[0.04]"
+                  : "relative h-48 overflow-hidden bg-black/10"
+              }
             >
-              <span>View Co-Leads</span>
-              <span>+</span>
-            </button>
-          )}
-        </div>
-      </div>
-
-      {/* Back side */}
-      {!isMentor && hasCoLeads && (
-        <div className="absolute inset-0 overflow-hidden rounded-2xl border border-white/10 bg-[#101010] p-6 [backface-visibility:hidden] [transform:rotateY(180deg)]">
-          <div className="mb-5 flex items-center justify-between">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-white/45">
-                Co-Leads
-              </p>
-
-              <h3 className="mt-2 text-xl font-semibold text-white">
-                {person.name}
-              </h3>
+              <img
+                src={person.image}
+                alt={person.name}
+                className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+              />
             </div>
 
-            <button
-              type="button"
-              onClick={onToggle}
-              className="rounded-full border border-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-white/70 transition hover:border-white/30 hover:text-white"
+            <div
+              className={
+                isMentor
+                  ? "flex h-[230px] flex-col p-6"
+                  : "flex min-h-[230px] flex-col p-5 sm:p-6"
+              }
             >
-              Back
-            </button>
-          </div>
+              <p
+                className="min-h-[40px] text-xs font-medium uppercase tracking-[0.25em]"
+                style={{
+                  color: person.highlight
+                    ? "var(--accent)"
+                    : "var(--muted)",
+                }}
+              >
+                {person.role}
+              </p>
 
-          <div className="grid gap-4">
-            {coLeads.map((coLead) => (
-              <CoLeadMiniCard key={coLead.id} coLead={coLead} />
-            ))}
-          </div>
-        </div>
-      )}
+              <h3
+                className="mt-3 text-xl font-semibold tracking-tight"
+                style={{ color: "var(--text)" }}
+              >
+                {person.name}
+              </h3>
+
+              {person.classDept && (
+                <p
+                  className="mt-2 text-sm"
+                  style={{ color: "var(--accent)" }}
+                >
+                  {person.classDept}
+                </p>
+              )}
+
+              <p
+                className="mt-4 h-[60px] text-sm leading-6"
+                style={{ color: "var(--muted)" }}
+              >
+                {person.description}
+              </p>
+
+              {!isMentor && hasCoLeads && (
+                <button
+                  type="button"
+                  onClick={onToggle}
+                  className="mt-auto inline-flex items-center justify-between rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-white transition-all duration-300 hover:border-white/25 hover:bg-white/[0.06]"
+                >
+                  <span>View Co-Leads</span>
+                  <span>+</span>
+                </button>
+              )}
+            </div>
+          </motion.div>
+        ) : (
+          <motion.div
+            key="coleads"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.25 }}
+            className="p-6"
+          >
+            <div className="mb-5 flex items-center justify-between">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.25em] text-white/45">
+                  Co-Leads
+                </p>
+
+                <p
+  className="mt-2 text-sm font-medium uppercase tracking-[0.18em]"
+  style={{ color: "var(--text)" }}
+>
+  {person.role}
+</p>
+              </div>
+
+              <button
+                type="button"
+                onClick={onToggle}
+                className="rounded-full border border-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-white/70 transition hover:border-white/30 hover:text-white"
+              >
+                Back
+              </button>
+            </div>
+
+            <div className="grid gap-4">
+              {coLeads.map((coLead) => (
+                <CoLeadMiniCard key={coLead.id} coLead={coLead} />
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   </article>
 );

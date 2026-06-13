@@ -1,7 +1,7 @@
 import {
   FaLinkedinIn,
   FaInstagram,
-  FaFacebookF,
+  FaYoutube,
   FaEnvelope,
 } from "react-icons/fa";
 import "./Footer.css";
@@ -111,11 +111,11 @@ links={[
   </a>
 
   <a
-    href="/contact#facebook"
-    className="social-icon facebook"
-    aria-label="IEDC SB College on Facebook"
+    href="/contact#youtube"
+    className="social-icon youtube"
+    aria-label="IEDC SB College on Youtube"
   >
-    <FaFacebookF />
+    <FaYoutube />
   </a>
 
   <a

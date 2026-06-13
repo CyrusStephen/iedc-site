@@ -1,9 +1,12 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { useState } from "react";
+import MemberRegisterForm from "@/components/MemberRegisterForm";
 
 export default function BecomeMemberPage() {
+  const [showForm, setShowForm] = useState(false);
   return (
     <main className="min-h-screen">
       <motion.div
@@ -69,9 +72,12 @@ export default function BecomeMemberPage() {
                 ))}
               </div>
 
-              <a href="#" className="mt-12 inline-flex px-6 py-3 bg-white text-[var(--accent)] rounded-full">
+              <button
+                onClick={() => setShowForm(true)}
+                className="mt-12 inline-flex px-6 py-3 bg-white text-[var(--accent)] rounded-full font-semibold cursor-pointer transition hover:bg-white/90"
+              >
                 Continue to form
-              </a>
+              </button>
             </div>
 
             <aside className="relative min-h-[520px] overflow-hidden rounded-3xl border border-white/10 bg-white/[0.02]">
@@ -105,6 +111,12 @@ export default function BecomeMemberPage() {
           </div>
         </section>
       </motion.div>
+
+      <AnimatePresence>
+        {showForm && (
+          <MemberRegisterForm onClose={() => setShowForm(false)} />
+        )}
+      </AnimatePresence>
     </main>
   );
 }

@@ -1,5 +1,11 @@
 "use client";
 import { useEffect, useState } from "react";
+import {
+  FaLinkedinIn,
+  FaInstagram,
+  FaYoutube,
+  FaEnvelope,
+} from "react-icons/fa";
 
 const socials = [
   {
@@ -19,12 +25,12 @@ const socials = [
     href: "#",
   },
   {
-    id: "facebook",
-    label: "Facebook",
+    id: "youtube",
+    label: "YouTube",
     value: "IEDC SB College",
     description:
-      "Stay connected with community posts, updates, and public-facing announcements.",
-    href: "#",
+      "Watch student entrepreneur conversations, visual projects, event clips, and IEDC TV items.",
+    href: "https://www.youtube.com/@iedcsbc",
   },
   {
     id: "email",
@@ -94,9 +100,12 @@ export default function ContactPage() {
                <div className="mt-10">
   <p className="text-base leading-8 text-white/60">
     Read our{" "}
-    <a href="/faqs" className="group relative inline-block text-white">
+    <a
+      href="/faqs"
+      className="group relative inline-block font-medium transition duration-300 hover:text-white"
+      style={{ color: "var(--accent)" }}
+    >
       frequently asked questions
-
       <span className="absolute left-0 -bottom-1 h-[1.5px] w-0 bg-[var(--accent)] transition-all duration-300 group-hover:w-full" />
     </a>{" "}
     from students to know if your question has already been answered.
@@ -119,6 +128,21 @@ export default function ContactPage() {
 }
 
 function ContactItem({ id, label, value, description, href, isActive }) {
+  const getIcon = (id) => {
+    switch (id) {
+      case "linkedin":
+        return <FaLinkedinIn className="text-xs" />;
+      case "instagram":
+        return <FaInstagram className="text-xs" />;
+      case "youtube":
+        return <FaYoutube className="text-xs" />;
+      case "email":
+        return <FaEnvelope className="text-xs" />;
+      default:
+        return null;
+    }
+  };
+
   const content = (
     <div
       id={id}
@@ -131,10 +155,11 @@ function ContactItem({ id, label, value, description, href, isActive }) {
       }}
     >
 <p
-  className="text-[10px] font-medium uppercase tracking-[0.32em]"
+  className="flex items-center gap-2 text-[10px] font-medium uppercase tracking-[0.32em]"
   style={{ color: "var(--muted)" }}
 >
-  {label}
+  {getIcon(id)}
+  <span>{label}</span>
 </p>
 
 <p
