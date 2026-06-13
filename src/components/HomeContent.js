@@ -376,14 +376,13 @@ function VisionCard() {
     >
       <div className="group relative h-96 md:h-[450px] rounded-b-[2rem] overflow-hidden border border-white/10 cursor-pointer transition-all duration-500 hover:border-white/30 hover:shadow-[0_30px_90px_rgba(255,255,255,0.08)]">
         <video
+          src="https://assets.vercel.com/video/upload/v1584132892/videos/nextjs/essentials/what-is-nextjs.mp4"
           autoPlay
-          muted
+          muted={true}
           loop
           playsInline
           className="absolute inset-0 h-full w-full object-cover"
-        >
-          <source src="/videos/vision.mp4" type="video/mp4" />
-        </video>
+        />
 
         <div className="absolute inset-0 bg-black/40 transition duration-500 group-hover:bg-black/25" />
 
@@ -427,11 +426,16 @@ function CommunityDivider() {
       {...sectionAnimation}
       className="relative left-1/2 right-1/2 -mx-[50vw] w-screen overflow-hidden"
     >
-      <div className="group relative h-[360px] bg-black md:h-[670px] cursor-pointer overflow-hidden">
+      <div className="group relative h-auto bg-black md:h-[670px] cursor-pointer overflow-hidden">
         <img
           src={images[currentImage]?.src}
           alt="IEDC Community"
-          className={`absolute inset-0 h-full w-full ${images[currentImage]?.style} transition duration-1000 group-hover:scale-105`}
+          className="w-full h-auto block md:hidden transition duration-1000 group-hover:scale-105"
+        />
+        <img
+          src={images[currentImage]?.src}
+          alt="IEDC Community"
+          className="hidden md:block absolute inset-0 h-full w-full object-cover object-center transition duration-1000 group-hover:scale-105"
         />
 
         <div className="absolute inset-0 bg-gradient-to-t from-[#050505]/90 via-[#050505]/25 to-transparent opacity-70 transition duration-700 group-hover:opacity-90" />
@@ -454,7 +458,7 @@ function CommunityDivider() {
             </h2>
           </div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 h-52 bg-gradient-to-b from-transparent to-[#050505]" />
+        <div className="absolute bottom-0 left-0 right-0 h-32 md:h-52 bg-gradient-to-b from-transparent to-[#050505]" />
       </div>
 
       <div className="absolute bottom-6 left-1/2 z-20 flex -translate-x-1/2 gap-3">
