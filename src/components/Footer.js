@@ -21,7 +21,7 @@ export default function Footer() {
           <div className="iedc-brand">
             <img
               src="/logos/iedc.jpeg"
-              alt="IEDC Logo"
+              alt="IEDC × IIC Logo"
               className="iedc-main-logo"
             />
 
@@ -34,19 +34,19 @@ export default function Footer() {
             title="Community"
             links={[
   { label: "Collaborations", href: "/#collaborations" },
-  { label: "IEDC Stories", href: "/#iedc-stories" },
-  { label: "IEDC Events", href: "/#iedc-events" },
-  { label: "IEDC TV", href: "/#iedc-tv" },
+  { label: "IEDC × IIC Stories", href: "/#iedc-stories" },
+  { label: "IEDC × IIC Events", href: "/#iedc-events" },
+  { label: "IEDC × IIC TV", href: "/#iedc-tv" },
 ]}
           />
 
           <FooterColumn
   title="Get Involved"
   links={[
-    { label: "Become a Member", href: "/get-involved/become-member" },
-    { label: "Pitch Your Idea", href: "/get-involved/pitch-your-idea" },
-    { label: "Partner With Us", href: "/get-involved/partner-with-us" },
-    { label: "Volunteer", href: "/get-involved/volunteer" },
+    { label: "Become a Member", href: "/get-involved#member" },
+    { label: "Pitch Your Idea", href: "/get-involved#pitch" },
+    { label: "Partner With Us", href: "/get-involved#partner" },
+    { label: "Volunteer", href: "/get-involved#volunteer" },
   ]}
 />
 
@@ -68,7 +68,7 @@ links={[
 
         <div className="iedc-footer-bottom">
           <div>
-            <p>© 2026 IEDC Saint Berchmans College</p>
+            <p>© 2026 IEDC × IIC Saint Berchmans College</p>
 
             <div className="iedc-affiliations">
               <span>In association with</span>
@@ -97,7 +97,7 @@ links={[
   <a
     href="/contact#linkedin"
     className="social-icon linkedin"
-    aria-label="IEDC SB College on LinkedIn"
+    aria-label="IEDC × IIC SB College on LinkedIn"
   >
     <FaLinkedinIn />
   </a>
@@ -105,7 +105,7 @@ links={[
   <a
     href="/contact#instagram"
     className="social-icon instagram"
-    aria-label="IEDC SB College on Instagram"
+    aria-label="IEDC × IIC SB College on Instagram"
   >
     <FaInstagram />
   </a>
@@ -113,7 +113,7 @@ links={[
   <a
     href="/contact#youtube"
     className="social-icon youtube"
-    aria-label="IEDC SB College on Youtube"
+    aria-label="IEDC × IIC SB College on Youtube"
   >
     <FaYoutube />
   </a>
@@ -121,7 +121,7 @@ links={[
   <a
     href="/contact#email"
     className="social-icon email"
-    aria-label="Email IEDC SB College"
+    aria-label="Email IEDC × IIC SB College"
   >
     <FaEnvelope />
   </a>

@@ -38,15 +38,35 @@ const involvementOptions = [
 
 export default function GetInvolvedPage() {
   const [activeForm, setActiveForm] = useState(null);
+  const [activeSection, setActiveSection] = useState(null);
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const params = new URLSearchParams(window.location.search);
-      const form = params.get("form");
-      if (form && ["member", "pitch", "partner", "volunteer", "showcase"].includes(form)) {
-        setActiveForm(form);
-      }
-    }
+    let timeoutId;
+
+    const highlightHashSection = () => {
+      const hash = window.location.hash.replace("#", "");
+      if (!hash) return;
+
+      requestAnimationFrame(() => {
+        const element = document.getElementById(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+        
+        setActiveSection(hash);
+        timeoutId = setTimeout(() => {
+          setActiveSection(null);
+        }, 1500);
+      });
+    };
+
+    highlightHashSection();
+
+    window.addEventListener("hashchange", highlightHashSection);
+    return () => {
+      window.removeEventListener("hashchange", highlightHashSection);
+      clearTimeout(timeoutId);
+    };
   }, []);
 
   return (
@@ -79,50 +99,55 @@ export default function GetInvolvedPage() {
             </p>
 
             <div className="mt-12 grid gap-5 sm:grid-cols-2">
-              {involvementOptions.map((item) => (
-                <button
-                  key={item.title}
-                  onClick={() => setActiveForm(item.id)}
-                  className="group rounded-2xl border p-6 transition-all duration-300 hover:-translate-y-1 cursor-pointer w-full text-left"
-                  style={{
-                    background: "var(--surface)",
-                    borderColor: "var(--border)",
-                  }}
-                >
-                  <h2
-                    className="text-xl font-semibold tracking-tight text-left"
-                    style={{ color: "var(--text)" }}
+              {involvementOptions.map((item) => {
+                const isActive = activeSection === item.id;
+                return (
+                  <button
+                    key={item.title}
+                    id={item.id}
+                    onClick={() => setActiveForm(item.id)}
+                    className="group scroll-mt-32 rounded-2xl border p-6 transition-all duration-300 hover:-translate-y-1 cursor-pointer w-full text-left"
+                    style={{
+                      background: isActive ? "rgba(245, 158, 11, 0.08)" : "var(--surface)",
+                      borderColor: isActive ? "var(--accent)" : "var(--border)",
+                    }}
                   >
-                    {item.title}
-                  </h2>
+                    <h2
+                      className="text-xl font-semibold tracking-tight text-left"
+                      style={{ color: "var(--text)" }}
+                    >
+                      {item.title}
+                    </h2>
 
-                  <p
-                    className="mt-3 text-sm leading-6 text-left"
-                    style={{ color: "var(--muted)" }}
-                  >
-                    {item.description}
-                  </p>
+                    <p
+                      className="mt-3 text-sm leading-6 text-left"
+                      style={{ color: "var(--muted)" }}
+                    >
+                      {item.description}
+                    </p>
 
-                  <div
-                    className="mt-6 inline-flex text-sm font-medium"
-                    style={{ color: "var(--accent)" }}
-                  >
-                    <span className="relative">
-                      {item.action}
-                      <span className="absolute left-0 -bottom-1 h-[1.5px] w-0 bg-[var(--accent)] transition-all duration-300 group-hover:w-full" />
-                    </span>
-                  </div>
-                </button>
-              ))}
+                    <div
+                      className="mt-6 inline-flex text-sm font-medium"
+                      style={{ color: "var(--accent)" }}
+                    >
+                      <span className="relative">
+                        {item.action}
+                        <span className="absolute left-0 -bottom-1 h-[1.5px] w-0 bg-[var(--accent)] transition-all duration-300 group-hover:w-full" />
+                      </span>
+                    </div>
+                  </button>
+                );
+              })}
             </div>
 
             {/* Showcase wide card */}
             <button
+              id="showcase"
               onClick={() => setActiveForm("showcase")}
-              className="group mt-5 rounded-2xl border p-6 transition-all duration-300 hover:-translate-y-1 cursor-pointer w-full text-left"
+              className="group mt-5 scroll-mt-32 rounded-2xl border p-6 transition-all duration-300 hover:-translate-y-1 cursor-pointer w-full text-left"
               style={{
-                background: "var(--surface)",
-                borderColor: "var(--border)",
+                background: activeSection === "showcase" ? "rgba(245, 158, 11, 0.08)" : "var(--surface)",
+                borderColor: activeSection === "showcase" ? "var(--accent)" : "var(--border)",
               }}
             >
               <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">

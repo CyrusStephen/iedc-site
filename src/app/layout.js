@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "IEDC SB College",
+  title: "IEDC × IIC SB College",
   description: "Innovation and entrepreneurship community",
 };
 

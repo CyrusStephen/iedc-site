@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function VisualDivider() {
   return (
-    <section className="relative w-full h-[55vh] md:h-[80vh] overflow-hidden">
+    <section className="relative w-full h-[60vh] md:h-[85vh] overflow-hidden">
        
 <Image
   src="/images/divider.jpg"

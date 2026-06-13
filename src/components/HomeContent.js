@@ -4,8 +4,9 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import CampusMapSection from "@/components/CampusMapSection";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { supabase } from "@/utils/supabase/client";
+import { HiOutlineSpeakerWave, HiOutlineSpeakerXMark } from "react-icons/hi2";
 
 const sectionAnimation = {
   initial: { opacity: 0, y: 28 },
@@ -300,7 +301,7 @@ export default function HomeContent() {
     />
     <div className="mt-4 flex justify-center">
       <Link
-        href="/get-involved?form=showcase"
+        href="/get-involved#showcase"
         className="group inline-flex items-center text-sm font-medium transition hover:text-white"
         style={{ color: "var(--accent)" }}
       >
@@ -325,7 +326,7 @@ export default function HomeContent() {
           </div>
           <div className="mt-8 flex justify-center">
             <Link
-              href="/get-involved?form=partner"
+              href="/get-involved#partner"
               className="group inline-flex items-center text-sm font-medium transition hover:text-white"
               style={{ color: "var(--accent)" }}
             >
@@ -369,22 +370,108 @@ export default function HomeContent() {
 }
 
 function VisionCard() {
+  const [isMuted, setIsMuted] = useState(true);
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    // Try to play unmuted first
+    video.muted = false;
+    
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => {
+          setIsMuted(false);
+        })
+        .catch(() => {
+          // Autoplay unmuted failed, fall back to muted autoplay
+          video.muted = true;
+          setIsMuted(true);
+          video.play().catch((err) => {
+            console.error("Muted autoplay failed:", err);
+          });
+        });
+    } else {
+      setIsMuted(false);
+    }
+  }, []);
+
+  const toggleMute = () => {
+    if (videoRef.current) {
+      const nextMuted = !isMuted;
+      videoRef.current.muted = nextMuted;
+      setIsMuted(nextMuted);
+    }
+  };
+
+  const toggleFullscreen = () => {
+    if (videoRef.current) {
+      if (videoRef.current.requestFullscreen) {
+        videoRef.current.requestFullscreen();
+      } else if (videoRef.current.webkitRequestFullscreen) { /* Safari */
+        videoRef.current.webkitRequestFullscreen();
+      } else if (videoRef.current.mozRequestFullScreen) { /* Firefox */
+        videoRef.current.mozRequestFullScreen();
+      } else if (videoRef.current.msRequestFullscreen) { /* IE/Edge */
+        videoRef.current.msRequestFullscreen();
+      }
+    }
+  };
+
   return (
     <motion.div
       {...sectionAnimation}
-      className="relative -mt-12 md:-mt-16 left-1/2 right-1/2 -mx-[50vw] w-screen"
+      className="relative -mt-6 md:-mt-8 left-1/2 right-1/2 -mx-[50vw] w-screen"
     >
-      <div className="group relative h-96 md:h-[450px] rounded-b-[2rem] overflow-hidden border border-white/10 cursor-pointer transition-all duration-500 hover:border-white/30 hover:shadow-[0_30px_90px_rgba(255,255,255,0.08)]">
+      <div 
+        className="group relative h-[460px] md:h-[550px] rounded-none overflow-hidden border border-white/10 transition-all duration-500 hover:border-white/20"
+        style={{
+          maskImage: "linear-gradient(to bottom, transparent, black 60px)",
+          WebkitMaskImage: "linear-gradient(to bottom, transparent, black 60px)",
+        }}
+      >
         <video
-          src="https://assets.vercel.com/video/upload/v1584132892/videos/nextjs/essentials/what-is-nextjs.mp4"
+          ref={videoRef}
+          src="/vision.mp4"
           autoPlay
-          muted={true}
+          muted={isMuted}
           loop
           playsInline
           className="absolute inset-0 h-full w-full object-cover"
         />
 
         <div className="absolute inset-0 bg-black/40 transition duration-500 group-hover:bg-black/25" />
+
+        {/* Fullscreen button */}
+        <button
+          type="button"
+          onClick={toggleFullscreen}
+          className="absolute bottom-5 right-[62px] z-20 flex h-8 w-8 items-center justify-center rounded-full bg-black/40 text-white/70 backdrop-blur-sm transition hover:text-white focus:outline-none"
+          title="Fullscreen"
+          aria-label="Enter fullscreen"
+        >
+          <svg className="w-[14px] h-[14px] fill-none stroke-current stroke-2" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3.75h4.5m-4.5 0v4.5m0-4.5L9 9M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9M3.75 20.25h4.5m-4.5 0v-4.5m0 4.5L9 15M20.25 20.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
+          </svg>
+        </button>
+
+        {/* Mute/Unmute toggle button */}
+        <button
+          type="button"
+          onClick={toggleMute}
+          className="absolute bottom-5 right-5 z-20 flex h-8 w-8 items-center justify-center rounded-full bg-black/40 text-white/70 backdrop-blur-md text-white shadow-2xl transition duration-300 transform hover:scale-110 hover:bg-black/60 hover:border-white/40 focus:outline-none"
+          title={isMuted ? "Unmute" : "Mute"}
+          aria-label={isMuted ? "Unmute video" : "Mute video"}
+        >
+          {isMuted ? (
+            <HiOutlineSpeakerXMark size={14} />
+          ) : (
+            <HiOutlineSpeakerWave size={14} />
+          )}
+        </button>
 
         <div className="relative z-10 flex h-full items-end p-6">
           <div>
@@ -393,7 +480,7 @@ function VisionCard() {
             </p>
 
             <h3 className="text-2xl font-semibold text-white md:text-3xl">
-              What IEDC Saint Berchmans is building this year
+              What IEDC × IIC Saint Berchmans is building this year
             </h3>
           </div>
         </div>

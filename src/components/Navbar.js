@@ -59,17 +59,27 @@ export default function Navbar() {
             href="/"
             className="flex items-center gap-3 transition-opacity duration-300 hover:opacity-90"
           >
-            <Image
-              src="/logos/iedc.jpeg"
-              alt="IEDC SB College"
-              width={36}
-              height={36}
-              priority
-              className="rounded-full"
-            />
+            <div className="flex items-center gap-1.5">
+              <Image
+                src="/logos/iedc.jpeg"
+                alt="IEDC Logo"
+                width={32}
+                height={32}
+                priority
+                className="rounded-full object-cover"
+              />
+              <Image
+                src="/logos/iic.jpeg"
+                alt="IIC Logo"
+                width={32}
+                height={32}
+                priority
+                className="rounded-full object-cover"
+              />
+            </div>
 
             <span className="text-sm font-semibold tracking-wide text-white drop-shadow">
-              IEDC SBC
+              IEDC × IIC SBC
             </span>
           </Link>
 
@@ -138,7 +148,7 @@ export default function Navbar() {
         }`}
       >
         <p className="text-xs md:text-sm font-medium tracking-[0.35em] text-zinc-300/90 backdrop-blur-sm">
-          IEDC • SAINT BERCHMANS COLLEGE
+          IEDC × IIC • SAINT BERCHMANS COLLEGE
         </p>
       </div>
     </>
